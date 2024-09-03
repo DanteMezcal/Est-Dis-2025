@@ -1,0 +1,3 @@
+longitud :: [a] -> Int
+longitud [] = []
+longitud (x:xs) = 1 + longitud xs
