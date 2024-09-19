@@ -26,11 +26,6 @@ indice (x:xs) z =
   if z <= longitud(x:xs)
   then indice(xs) (z - 1)
   else error "El indice esta fuera del rango de la lista"
-  
---indice :: [a] -> Int -> a
---indice (x:xs) 1 = x
---indice (x:xs) i = indice xs (i - 1)
-
 
 divisores :: Int -> [Int]
 divisores 0 = []
