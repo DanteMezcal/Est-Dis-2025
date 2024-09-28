@@ -28,9 +28,10 @@ maximoLista (x:xs) =
 indice :: [a] -> Int -> a
 indice [] z = error "El indice está fuera del rango o la lista está vacía"
 indice (x:xs) z =
-  if z < 0 then error "El indice es menor que 0"
+  if z < 0 || z >= longitud (x:xs) then error "El indice está fuera del rango o la lista está vacía"
   else if z == 0 then x
   else indice xs (z - 1)
+  
 --6
 divisores :: Int -> [Int]
 divisores n = [x | x <- [1..n], n `mod` x == 0]
