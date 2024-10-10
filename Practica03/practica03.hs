@@ -33,7 +33,8 @@ conjunto (Node x xs) =
 
 --6
 eliminarIndice :: List a -> Int -> List a
-eliminarIndice (Node x xs) 0 = xs 
+eliminarIndice (Node x xs) 0 = xs
+eliminarIndice Void _ = Void
 eliminarIndice (Node x xs) a =
   if a >= 0 && a <= (longitud (Node x xs)) - 1
   then (Node x(eliminarIndice xs (a - 1)))
@@ -41,7 +42,7 @@ eliminarIndice (Node x xs) a =
 
 --7
 insertarIndice :: List a -> Int -> a -> List a
-insertarIndice Void ind ele = error "Tu lista esta vacia"
+insertarIndice Void ind ele = (Node ele Void)
 insertarIndice (Node x xs) 0 ele = (Node ele (Node x xs))
 insertarIndice (Node x xs) ind ele =
   if ind > 0 && ind <= (longitud (Node x xs))
