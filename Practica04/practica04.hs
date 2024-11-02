@@ -42,3 +42,15 @@ minimo :: Ord a => Arbol a -> a
 minimo ArbolVacio = error "Un arbol vacio no puede tener minimos"
 minimo (Raiz a ArbolVacio ArbolVacio) = a
 minimo (Raiz a t1 t2) = min a (min (minimo t1) (minimo t2))
+
+--7
+eliminar :: Ord a => Arbol a -> a -> Arbol a
+eliminar ArbolVacio _ = ArbolVacio
+eliminar (Raiz a ArbolVacio t2) _ = t2
+eliminar (Raiz a t1 ArbolVacio) _ = t1
+eliminar (Raiz a t1 t2) eli =
+  if eli == a
+  then (Raiz (minimo t2) t1 (eliminar t2 (minimo t2)))
+  else if eli < a
+          then Raiz a (eliminar t1 eli) t2 
+          else Raiz a t1 (eliminar t2 eli)
