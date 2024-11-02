@@ -30,6 +30,17 @@ recorrido (Raiz a t1 t2) PreOrder = [a] ++ recorrido t1 PreOrder ++ recorrido t2
 
 --PostOrder
 recorrido (Raiz a t1 t2) PosOrder = recorrido t1 PosOrder ++ recorrido t2 PosOrder ++ [a]
+
+--5
+chuleta :: [[a]] -> [[a]] -> [[a]]
+chuleta [] [] = []
+chuleta xs [] = xs
+chuleta [] ys = ys
+chuleta (x:xs) (y:ys) = (x++y) : chuleta xs ys
+
+niveles :: Arbol a -> [[a]]
+niveles ArbolVacio = []
+niveles (Raiz a t1 t2) = [a] : chuleta (niveles t1)  (niveles t2)
   
 --6 maximo
 maximo :: Ord a => Arbol a -> a 
