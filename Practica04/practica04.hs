@@ -54,3 +54,4 @@ eliminar (Raiz a t1 t2) eli =
   else if eli < a
           then Raiz a (eliminar t1 eli) t2 
           else Raiz a t1 (eliminar t2 eli)
+  
