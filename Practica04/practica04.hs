@@ -43,16 +43,16 @@ niveles ArbolVacio = []
 niveles (Raiz a t1 t2) = [a] : chuleta (niveles t1)  (niveles t2)
   
 --6 maximo
-maximo :: Ord a => Arbol a -> a 
-maximo ArbolVacio = error "Un arbol vacio no puede tener maximos"
-maximo (Raiz a ArbolVacio ArbolVacio) = a
-maximo (Raiz a t1 t2) = max a (max (maximo t1) (maximo t2))
-  
+maximo :: (Ord a) => Arbol a -> a
+maximo ArbolVacio = error "El árbol está vacío"
+maximo (Raiz valor _ ArbolVacio) = valor
+maximo (Raiz _ _ derecho) = maximo derecho
+
 --6 minimo
-minimo :: Ord a => Arbol a -> a
-minimo ArbolVacio = error "Un arbol vacio no puede tener minimos"
-minimo (Raiz a ArbolVacio ArbolVacio) = a
-minimo (Raiz a t1 t2) = min a (min (minimo t1) (minimo t2))
+minimo :: (Ord a) => Arbol a -> a
+minimo ArbolVacio = error "El árbol está vacío"
+minimo (Raiz valor ArbolVacio _) = valor
+minimo (Raiz _ izquierdo _) = minimo izquierdo
 
 --7
 eliminar :: Ord a => Arbol a -> a -> Arbol a
