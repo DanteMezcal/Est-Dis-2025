@@ -43,12 +43,15 @@ niveles ArbolVacio = []
 niveles (Raiz a t1 t2) = [a] : chuleta (niveles t1)  (niveles t2)
   
 --6 maximo
+-- los _ funcionan para idnetificar al subarbol izquierdo, pobrecito, lo ignoramos
 maximo :: (Ord a) => Arbol a -> a
 maximo ArbolVacio = error "El árbol está vacío"
 maximo (Raiz valor _ ArbolVacio) = valor
 maximo (Raiz _ _ derecho) = maximo derecho
 
 --6 minimo
+-- Por lo que investigué los máximos siempre estarán en los subárboles derechos, por lo que si se respeta eso si jala
+-- ahora le toca ser ignorado al subárbol derecho y usamos _
 minimo :: (Ord a) => Arbol a -> a
 minimo ArbolVacio = error "El árbol está vacío"
 minimo (Raiz valor ArbolVacio _) = valor
